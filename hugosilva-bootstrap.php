@@ -38,7 +38,7 @@ add_action( 'wp_default_scripts', function( $scripts ) {
 add_action( 'wp_enqueue_scripts', function() {
     wp_dequeue_style( 'contact-form-7' );
     global $post;
-    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'contact-form-7') ) {
+    if( is_front_page() || ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'contact-form-7') ) ) {
         wp_enqueue_script('contact-form-7');
     }else{
         wp_dequeue_script( 'contact-form-7' );

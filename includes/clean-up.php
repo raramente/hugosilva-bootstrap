@@ -35,6 +35,12 @@ remove_action ('wp_head', 'rsd_link');
 remove_action( 'wp_head', 'feed_links', 2 );
 remove_action('wp_head', 'feed_links_extra', 3 );
 
+// Removes inline css on the header for images auto size
+// https://wordpress.org/support/topic/weird-style-code-in-my-website/
+add_filter('wp_img_tag_add_auto_sizes', function() {
+    return false;
+});
+
 // Remove inline css for WP core blocks.
 add_action('wp_footer', function () {
     wp_dequeue_style('core-block-supports');
